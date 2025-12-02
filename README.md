@@ -5,5 +5,5 @@ Projet ML - Prédiction des prix immobiliers
 python3 -m venv env ou python -m venv venv
 
 # Activer et installer l'environnement
-source env/bin/activate  # Windows: venv\Scripts\activate ou .\env\Scripts\Activate 
+source venv/bin/activate  # Windows: venv\Scripts\activate ou .\venv\Scripts\Activate 
 pip install -r requirements.txt
