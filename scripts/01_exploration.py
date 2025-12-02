@@ -16,10 +16,10 @@ numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
 cat_cols = ['ville', 'quartier', 'type_bien', 'etat', 'chauffage', 'classe_energie']
 
 # 🔹 4️⃣ Visualiser les distributions numériques
-# plot_histograms(df, numeric_cols)
+plot_histograms(df, numeric_cols)
 
 # 🔹 5️⃣ Boxplots pour détecter les outliers
-# plot_boxplots(df, numeric_cols)
+plot_boxplots(df, numeric_cols)
 
 # 🔹 6️⃣ Corrélations avec la cible 'prix'
 if 'prix' in df.columns:
