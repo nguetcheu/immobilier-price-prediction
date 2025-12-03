@@ -1,0 +1,15 @@
+prix_m2
+surface_habitable
+nb_pieces
+nb_chambres
+etage
+ville
+ascenseur
+surface_par_piece
+distance_centre
+quartier
+classe_energie
+terrasse
+type_bien
+parking
+etat
