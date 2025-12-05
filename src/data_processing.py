@@ -29,7 +29,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
     
-    # 1️⃣ Remplacer les valeurs manquantes
+    # Remplacer les valeurs manquantes
     for col in df.columns:
         if df[col].dtype in ['float64', 'int64', 'Int64']:
             median = df[col].median()
@@ -37,27 +37,27 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
         else:
             df[col] = df[col].fillna("Inconnu")
     
-    # 2️⃣ Arrondir à 2 décimales pour certaines colonnes float
+    # Arrondir à 2 décimales pour certaines colonnes float
     round_2_cols = ["surface_habitable", "distance_centre", "distance_transport", "prix"]
     for col in round_2_cols:
         if col in df.columns:
             df[col] = df[col].round(2)
     
-    # 3️⃣ Colonnes entières (supprimer .0)
+    # Colonnes entières (supprimer .0)
     int_cols = ["nb_chambres", "annee_construction", "parking", "score_commerces"]
     for col in int_cols:
         if col in df.columns:
             df[col] = df[col].apply(lambda x: int(x) if pd.notna(x) else 0)
             df[col] = df[col].astype("Int64")
     
-    # 4️⃣ Encoder les colonnes catégorielles
+    # Encoder les colonnes catégorielles
     cat_cols = ["ville", "quartier", "type_bien", "etat", "chauffage", "classe_energie"]
     for col in cat_cols:
         if col in df.columns:
             le = LabelEncoder()
             df[col] = le.fit_transform(df[col])
     
-    # 5️⃣ Transformer date_mise_vente en année et mois
+    # Transformer date_mise_vente en année et mois
     if "date_mise_vente" in df.columns:
         df["date_mise_vente"] = pd.to_datetime(df["date_mise_vente"], errors='coerce')
         df["annee_vente"] = df["date_mise_vente"].dt.year.fillna(df["date_mise_vente"].dt.year.median())
